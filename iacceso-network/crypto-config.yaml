@@ -1,0 +1,51 @@
+# Copyright www.iacceso.cl All Rights Reserved.
+# Autor: Álvaro Díaz Meza, adiaz@iacceso.cl
+# Date: 20-02-2023  4 Organizaciones
+# SPDX-License-Identifier: Apache-2.0
+#
+OrdererOrgs:
+    - Name: Orderer
+      Domain: iacceso.cl
+      EnableNodeOUs: true
+      Specs:
+        - Hostname: orderer
+          SANS:
+            - localhost
+PeerOrgs:
+    - Name: Org1
+      Domain: org1.iacceso.cl
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org2
+      Domain: org2.iacceso.cl
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org3
+      Domain: org3.iacceso.cl
+      EnableNodeOUs: true    
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org4
+      Domain: org4.iacceso.cl
+      EnableNodeOUs: true    
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+  
