@@ -1,0 +1,190 @@
+name: iacceso-network-local
+version: "1.0"
+caliper:
+  blockchain: fabric
+organizations:
+  Org1:
+    mspid: Org1MSP
+    peers:
+      - peer0.org1.iacceso.cl
+    #certificateAuthorities:
+    #  - #  int.ca.org1.iacceso.cl:
+    adminPrivateKey:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/Admin@org1.iacceso.cl/msp/keystore/priv_sk
+    signedCert:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/Admin@org1.iacceso.cl/msp/signcerts/Admin@org1.iacceso.cl-cert.pem
+  Org2:
+    mspid: Org2MSP
+    peers:
+      - peer0.org2.iacceso.cl
+    #certificateAuthorities:
+    #  - #  int.ca.org2.iacceso.cl:
+    adminPrivateKey:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/Admin@org2.iacceso.cl/msp/keystore/priv_sk
+    signedCert:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/Admin@org2.iacceso.cl/msp/signcerts/Admin@org2.iacceso.cl-cert.pem
+  Org3:
+    mspid: Org3MSP
+    peers:
+      - peer0.org3.iacceso.cl
+    #certificateAuthorities:
+    #  - #  int.ca.org3.iacceso.cl:
+    adminPrivateKey:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/Admin@org3.iacceso.cl/msp/keystore/priv_sk
+    signedCert:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/Admin@org3.iacceso.cl/msp/signcerts/Admin@org3.iacceso.cl-cert.pem
+  Org4:
+    mspid: Org4MSP
+    peers:
+      - peer0.org4.iacceso.cl
+    #certificateAuthorities:
+    #  - #  int.ca.org4.iacceso.cl:
+    adminPrivateKey:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/Admin@org4.iacceso.cl/msp/keystore/priv_sk
+    signedCert:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/Admin@org4.iacceso.cl/msp/signcerts/Admin@org4.iacceso.cl-cert.pem
+channels:
+  marketplace:
+    orderers:
+    #  - orderer.org1.iacceso.cl
+    #  - orderer.org2.iacceso.cl
+    #  - orderer.org3.iacceso.cl
+      - orderer.iacceso.cl
+    peers:
+      peer0.org1.iacceso.cl:
+        eventSource: true
+      peer0.org2.iacceso.cl:
+        eventSource: true
+      peer0.org3.iacceso.cl:
+        eventSource: true
+      peer0.org4.iacceso.cl:
+        eventSource: false
+    created: true
+    chaincodes:
+      - id: foodcontrol
+        version: v1.0
+        language: golang
+clients:
+  User1@org1.iacceso.cl:
+    client:
+      organization: Org1
+      connection:
+        timeout:
+          peer:
+            endorser: "300"
+      credentialStore:
+        path: tmp/hfc-kvs/org1
+        cryptoStore:
+          path: tmp/hfc-kvs/org1
+      clientPrivateKey:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/User1@org1.iacceso.cl/msp/keystore/priv_sk
+      clientSignedCert:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/User1@org1.iacceso.cl/msp/signcerts/User1@org1.iacceso.cl-cert.pem
+  User1@org2.iacceso.cl:
+    client:
+      organization: Org2
+      connection:
+        timeout:
+          peer:
+            endorser: "300"
+      credentialStore:
+        path: tmp/hfc-kvs/org2
+        cryptoStore:
+          path: tmp/hfc-kvs/org2
+      clientPrivateKey:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/User1@org2.iacceso.cl/msp/keystore/priv_sk
+      clientSignedCert:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/User1@org2.iacceso.cl/msp/signcerts/User1@org2.iacceso.cl-cert.pem
+  User1@org3.iacceso.cl:
+    client:
+      organization: Org3
+      connection:
+        timeout:
+          peer:
+            endorser: "300"
+      credentialStore:
+        path: tmp/hfc-kvs/org3
+        cryptoStore:
+          path: tmp/hfc-kvs/org3
+      clientPrivateKey:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/User1@org3.iacceso.cl/msp/keystore/priv_sk
+      clientSignedCert:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/User1@org3.iacceso.cl/msp/signcerts/User1@org3.iacceso.cl-cert.pem
+  User1@org4.iacceso.cl:
+    client:
+      organization: Org4
+      connection:
+        timeout:
+          peer:
+            endorser: "300"
+      credentialStore:
+        path: tmp/hfc-kvs/org4
+        cryptoStore:
+          path: tmp/hfc-kvs/org4
+      clientPrivateKey:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/User1@org4.iacceso.cl/msp/keystore/priv_sk
+      clientSignedCert:
+        path: ../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/User1@org4.iacceso.cl/msp/signcerts/User1@org4.iacceso.cl-cert.pem
+peers:
+  peer0.org1.iacceso.cl:
+    url: grpcs://localhost:7051
+    tlsCACerts:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/tlsca/tlsca.org1.iacceso.cl-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.org1.iacceso.cl
+      hostnameOverride: peer0.org1.iacceso.cl
+      grpc.keepalive_time_ms: 600000
+  peer0.org2.iacceso.cl:
+    url: grpcs://localhost:8051
+    tlsCACerts:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/tlsca/tlsca.org2.iacceso.cl-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.org2.iacceso.cl
+      hostnameOverride: peer0.org2.iacceso.cl
+      grpc.keepalive_time_ms: 600000
+  peer0.org3.iacceso.cl:
+    url: grpcs://localhost:9051
+    tlsCACerts:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/tlsca/tlsca.org3.iacceso.cl-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.org3.iacceso.cl
+      hostnameOverride: peer0.org3.iacceso.cl
+      grpc.keepalive_time_ms: 600000
+  peer0.org4.iacceso.cl:
+    url: grpcs://localhost:9151
+    tlsCACerts:
+      path: ../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/tlsca/tlsca.org4.iacceso.cl-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.org4.iacceso.cl
+      hostnameOverride: peer0.org4.iacceso.cl
+      grpc.keepalive_time_ms: 600000
+orderers:
+  orderer.iacceso.cl:
+    url: grpcs://localhost:7050
+    grpcOptions:
+      ssl-target-name-override: orderer.iacceso.cl
+    tlsCACerts:
+      path: ../iacceso-network/crypto-config/ordererOrganizations/iacceso.cl/tlsca/tlsca.iacceso.cl-cert.pem
+#  orderer.org2.iacceso.cl:
+#    url: grpcs://localhost:8050
+#    grpcOptions:
+#      ssl-target-name-override: orderer.org2.iacceso.cl
+#    tlsCACerts:
+#      path: ../iacceso-network/fabric-ca/org2.iacceso.cl/tls-int/ca-chain.pem
+#  orderer.org3.iacceso.cl:
+#    url: grpcs://localhost:9050
+#    grpcOptions:
+#      ssl-target-name-override: orderer.org3.iacceso.cl
+#    tlsCACerts:
+#      path: ../iacceso-network/fabric-ca/org3.iacceso.cl/tls-int/ca-chain.pem
+#certificateAuthorities:
+#  int.ca.org1.iacceso.cl:
+#    url: http://localhost:7056
+#    caName: int.ca.org1.iacceso.cl
+#    #tlsCACerts:
+#    #  pem:
+#    #    - |
+#    #      ${CAPEM}
+#    httpOptions:
+#      verify: false
+

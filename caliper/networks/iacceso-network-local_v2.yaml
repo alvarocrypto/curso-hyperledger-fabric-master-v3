@@ -1,0 +1,66 @@
+name: Caliper Benchmarks
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  # channelName of mychannel matches the name of the channel created by test network
+  - channelName: marketplace
+    # the chaincodeIDs of all the fabric chaincodes in caliper-benchmarks
+    contracts:
+    - id: foodcontrol
+  #  - id: fixed-asset
+  #  - id: marbles
+  #  - id: simple
+  #  - id: smallbank
+
+organizations:
+  - mspid: Org1MSP
+    # Identities come from cryptogen created material for test-network
+    identities:
+      certificates:
+      - name: 'Admin@org1.iacceso.cl'
+        clientPrivateKey:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/Admin@org1.iacceso.cl/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/users/Admin@org1.iacceso.cl/msp/signcerts/Admin@org1.iacceso.cl-cert.pem'
+    connectionProfile:
+      path: '../iacceso-network/crypto-config/peerOrganizations/org1.iacceso.cl/msp/config.yaml'
+      discover: true
+  - mspid: Org2MSP
+    # Identities come from cryptogen created material for test-network
+    identities:
+      certificates:
+      - name: 'Admin@org2.iacceso.cl'
+        clientPrivateKey:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/Admin@org2.iacceso.cl/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/users/Admin@org2.iacceso.cl/msp/signcerts/Admin@org2.iacceso.cl-cert.pem'
+    connectionProfile:
+      path: '../iacceso-network/crypto-config/peerOrganizations/org2.iacceso.cl/msp/config.yaml'
+      discover: true
+  - mspid: Org3MSP
+    # Identities come from cryptogen created material for test-network
+    identities:
+      certificates:
+      - name: 'Admin@org3.iacceso.cl'
+        clientPrivateKey:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/Admin@org3.iacceso.cl/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/users/Admin@org3.iacceso.cl/msp/signcerts/Admin@org3.iacceso.cl-cert.pem'
+    connectionProfile:
+      path: '../iacceso-network/crypto-config/peerOrganizations/org3.iacceso.cl/msp/config.yaml'
+      discover: true
+  - mspid: Org4MSP
+    # Identities come from cryptogen created material for test-network
+    identities:
+      certificates:
+      - name: 'Admin@org4.iacceso.cl'
+        clientPrivateKey:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/Admin@org4.iacceso.cl/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/users/Admin@org4.iacceso.cl/msp/signcerts/Admin@org4.iacceso.cl-cert.pem'
+    connectionProfile:
+      path: '../iacceso-network/crypto-config/peerOrganizations/org4.iacceso.cl/msp/config.yaml'
+      discover: true

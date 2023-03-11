@@ -1,0 +1,45 @@
+test:
+  clients:
+    type: local
+    number: 2
+  rounds:
+  - label: create a rate.
+    txDuration:
+    - 30
+    rateControl:
+    - type: fixed-backlog
+      opts:
+        unfinished_per_client: 5
+    callback: benchmark/callbacks/createRate.js
+#  - label: query a rate.
+#    txDuration:
+#    - 30
+#    rateControl:
+#    - type: fixed-backlog
+#      opts:
+#        unfinished_per_client: 5
+#    arguments:
+#      assets: 2
+#    callback: benchmark/callbacks/queryRate.js
+#monitor:
+#  type:
+#  - docker
+#  - process
+#  docker:
+#    name:
+#    - all
+#  process:
+#  - command: node
+#    arguments: fabricClientWorker.js
+#    multiOutput: avg
+#  interval: 1
+observer:
+  type: local
+  interval: 1
+  #type: prometheus
+  #interval: 5
+monitor:
+  interval: 1
+  type: ["docker"]
+  docker:
+    containers: ["all"]
